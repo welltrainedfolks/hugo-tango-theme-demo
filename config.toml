@@ -1,0 +1,28 @@
+baseurl = "https://www.example.org/"
+title = "Tango Theme"
+languageCode = "en-us"
+copyright = "Copyright &copy; 2018 - Author Name"
+canonifyurls = true
+theme = "tango"
+paginate = 3
+pygmentsCodeFences = true
+pygmentsUseClasses = true
+
+[permalinks]
+    posts = "/:year/:month/:title/"
+
+summaryLength = 30
+enableEmoji = true
+pygmentsCodeFences = true
+
+[author]
+    name = "Author Name"
+    email = "author@example.com"
+
+[params]
+    description = "Design inspired by linux.org.ru default theme"
+    i18n_categories = "Categories:"
+    i18n_read_time = " min. to read"
+    i18n_read_more = "Read more →"
+
+
