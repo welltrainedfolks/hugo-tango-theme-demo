@@ -1,4 +1,4 @@
-baseurl = "http:/tango.hodakov.me/"
+baseurl = "https:/tango.hodakov.me/"
 title = "Tango Theme"
 languageCode = "en-us"
 copyright = "Copyright &copy; 2018 - Author Name"
