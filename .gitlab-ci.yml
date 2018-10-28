@@ -9,7 +9,7 @@ build site:
     - wget https://github.com/gohugoio/hugo/releases/download/v0.49.2/hugo_0.49.2_Linux-64bit.tar.gz
     - tar xf hugo_0.49.2_Linux-64bit.tar.gz -C /usr/local/bin
   script:
-    - ls /usr/local/bin
+    - find .
     - /usr/local/bin/hugo -d tango.hodakov.me 
   artifacts:
     untracked: true
