@@ -1,0 +1,3 @@
+[submodule "tango"]
+    path = themes/tango
+    url = ../hugo-tango-theme.git
