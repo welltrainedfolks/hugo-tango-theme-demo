@@ -1,0 +1,32 @@
+image: ruby:2.5-alpine
+
+build site:
+  stage: build
+  before_script:
+    - apk --no-cache add ca-certificates wget
+    - update ca-certificates
+    - wget https://github.com/gohugoio/hugo/releases/download/v0.49.2/hugo_0.49.2_Linux-64bit.tar.gz
+    - tar xf hugo_0.49.2_Linux-64bit.tar.gz -C /usr/local/bin
+  script:
+    - ls /usr/local/bin
+    - /usr/local/bin/hugo -d tango.hodakov.me 
+  artifacts:
+    untracked: true
+    expire_in: 4 hours
+    paths:
+      - tango.hodakov.me
+
+deploy site:
+  stage: deploy
+  only:
+    - master
+  before_script:
+    - apk add --no-cache openssh-client
+    - mkdir -p ~/.ssh
+    - echo "$DEPLOY_KEY" | tr -d '\r' > ~/.ssh/id_rsa
+    - chmod 600 ~/.ssh/id_rsa
+    - eval "$(ssh-agent -s)"
+    - ssh-add ~/.ssh/id_rsa
+    - ssh-keyscan -H $DEPLOY_HOST >> ~/.ssh/known_hosts
+  script:
+    - scp -r tango.hodakov.me $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH
