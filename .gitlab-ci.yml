@@ -4,7 +4,7 @@ build site:
   stage: build
   before_script:
     - apk --no-cache add ca-certificates wget
-    - update ca-certificates
+    - update-ca-certificates
     - wget https://github.com/gohugoio/hugo/releases/download/v0.49.2/hugo_0.49.2_Linux-64bit.tar.gz
     - tar xf hugo_0.49.2_Linux-64bit.tar.gz -C /usr/local/bin
   script:
