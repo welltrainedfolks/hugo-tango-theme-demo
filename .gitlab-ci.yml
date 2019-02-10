@@ -1,6 +1,6 @@
 variables:
   GIT_SUBMODULE_STRATEGY: recursive
-  HUGO_ARCHIVE: https://github.com/gohugoio/hugo/releases/download/v0.49.2/hugo_0.49.2_Linux-64bit.tar.gz
+  HUGO_ARCHIVE: https://github.com/gohugoio/hugo/releases/download/v0.54.0/hugo_0.54.0_Linux-64bit.tar.gz
 
 build site:
   stage: build
@@ -8,7 +8,7 @@ build site:
     - apk --no-cache add ca-certificates wget openssh-client
     - update-ca-certificates
     - wget $HUGO_ARCHIVE
-    - tar xf hugo_0.49.2_Linux-64bit.tar.gz -C /usr/local/bin
+    - tar xf hugo_0.54.0_Linux-64bit.tar.gz -C /usr/local/bin
   script:
     - /usr/local/bin/hugo -d tango.hodakov.me 
   artifacts:
