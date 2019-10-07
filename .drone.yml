@@ -1,0 +1,35 @@
+---
+kind: pipeline
+type: docker
+name: publish
+
+steps:
+steps:
+- name: fetch_submodules
+  image: alpine/git
+  commands:
+  - ls -lah themes/tango
+  - git submodule update --init
+  - ls -lah themes/tango
+- name: build
+  image: fat0troll/hugo
+  commands:
+    - hugo -d tango.hodakov.me
+- name: publish
+  image: appleboy/drone-scp
+  settings:
+    host:
+      from_secret: web_host
+    username:
+      from_secret: ssh_user
+    password:
+      from_secret: ssh_password
+    target:
+      from_secret: web_target
+    rm: true
+    strip_components: 1
+    source:
+      - tango.hodakov.me/*
+trigger:
+  branch:
+    - master
