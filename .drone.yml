@@ -12,9 +12,11 @@ steps:
   - git submodule update --init
   - ls -lah themes/tango
 - name: build
-  image: fat0troll/hugo
-  commands:
-    - hugo -d tango.hodakov.me
+  image: plugins/hugo
+  settings:
+    hugo_version: 0.58.3
+    pull: always
+    validate: true
 - name: publish
   image: appleboy/drone-scp
   settings:
@@ -29,7 +31,7 @@ steps:
     rm: true
     strip_components: 1
     source:
-      - tango.hodakov.me/*
+      - public/*
 trigger:
   branch:
     - master
