@@ -1,7 +1,7 @@
 baseurl = "https:/tango.hodakov.me/"
 title = "Tango Theme"
 languageCode = "en-us"
-copyright = "Copyright &copy; 2018 - Author Name"
+copyright = "Copyright &copy; 2019 - Author Name"
 canonifyurls = true
 theme = "tango"
 paginate = 3
